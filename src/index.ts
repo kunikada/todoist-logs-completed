@@ -1,6 +1,6 @@
 function doPost(e: GoogleAppsScript.Events.DoPost): GoogleAppsScript.Content.TextOutput {
   const data = JSON.parse(e.postData.contents);
-  const response = new MyResponse("success", "ok");
+  const response = new MyResponse(RESPONSE_STATUS.SUCCESS, "ok");
 
   try {
     const todoist = new Todoist();
@@ -27,7 +27,7 @@ function doPost(e: GoogleAppsScript.Events.DoPost): GoogleAppsScript.Content.Tex
     console.error(err);
     console.log(data);
 
-    response.status = "error";
+    response.status = RESPONSE_STATUS.ERROR;
     response.message = err.message;
   }
 

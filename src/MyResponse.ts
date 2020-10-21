@@ -1,8 +1,13 @@
+enum RESPONSE_STATUS {
+  SUCCESS = 'success',
+  ERROR = 'error'
+}
+
 class MyResponse {
-  status: string;
+  status: RESPONSE_STATUS;
   message: string;
 
-  constructor(status: string, message: string) {
+  constructor(status: RESPONSE_STATUS, message: string) {
     this.status = status;
     this.message = message;
   }
