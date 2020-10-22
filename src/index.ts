@@ -9,7 +9,7 @@ function doPost(e: GoogleAppsScript.Events.DoPost): GoogleAppsScript.Content.Tex
       content: data.event_data.content,
       project: todoist.projectName(data.event_data.project_id),
       due: "",
-      completed_at: data.event_data.date_completed,
+      completed_at: Utilities.formatDate(new Date(data.event_data.date_completed), Session.getScriptTimeZone(), "yyyy-MM-dd HH:mm:ss"),
       labels: "",
       priority: data.event_data.priority,
       url: data.event_data.url
