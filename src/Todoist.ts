@@ -8,11 +8,15 @@ class Todoist {
       return;
     }
 
-    const url = "https://api.todoist.com/sync/v8/sync"
-      + `?token=${Todoist.TOKEN}`
-      + "&sync_token=*"
+    const url = "https://api.todoist.com/sync/v9/sync"
+      + "?sync_token=*"
       + '&resource_types=[%22labels%22,%22projects%22]';
-    const response = UrlFetchApp.fetch(url);
+    const options = {
+      headers: {
+        Authorization: `Bearer ${Todoist.TOKEN}`
+      }
+    };
+    const response = UrlFetchApp.fetch(url, options);
     const data = JSON.parse(response.getContentText("UTF-8"));
 
     this.labels = {};
