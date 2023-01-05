@@ -5,6 +5,9 @@ function doPost(e: GoogleAppsScript.Events.DoPost): GoogleAppsScript.Content.Tex
   try {
     const todoist = new Todoist();
 
+    if (!data.event_data.completed_at) {
+        data.event_data.completed_at = Date.now();
+    }
     const row = {
       content: data.event_data.content,
       project: todoist.projectName(data.event_data.project_id),
